@@ -1,0 +1,350 @@
+{
+ "decider_model": "strands-decider-2b-hobson-v19",
+ "rows": [
+  {
+   "i": 0,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.8002
+    }
+   },
+   "decider_ms": 1903.671900043264,
+   "decider_server_ms": 1015.0,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 12028.855900047347,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 1,
+   "expected": {
+    "tool": "ask_more_questions"
+   },
+   "decider": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 0.4887
+    }
+   },
+   "decider_ms": 1849.4731999235228,
+   "decider_server_ms": 934.2,
+   "llm": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11238.126599928364,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 2,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.7525
+    }
+   },
+   "decider_ms": 1878.2684999750927,
+   "decider_server_ms": 957.4,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11083.823999972083,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 3,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.7927
+    }
+   },
+   "decider_ms": 1982.2079000296071,
+   "decider_server_ms": 1076.3,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11249.209600035101,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 4,
+   "expected": {
+    "tool": "ask_more_questions"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.6699
+    }
+   },
+   "decider_ms": 1491.0734000150114,
+   "decider_server_ms": 941.9,
+   "llm": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 10839.219599962234,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 5,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.8557
+    }
+   },
+   "decider_ms": 1741.1294999765232,
+   "decider_server_ms": 1068.0,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 10911.511600017548,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 6,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.7254
+    }
+   },
+   "decider_ms": 1994.6423000656068,
+   "decider_server_ms": 1066.3,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11370.750700007193,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 7,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.8484
+    }
+   },
+   "decider_ms": 1713.7457000790164,
+   "decider_server_ms": 926.1,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11116.764399921522,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 8,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.8048
+    }
+   },
+   "decider_ms": 1562.7684000646695,
+   "decider_server_ms": 909.2,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11081.052800058387,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 9,
+   "expected": {
+    "tool": "ask_more_questions"
+   },
+   "decider": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 0.4882
+    }
+   },
+   "decider_ms": 2023.9732000045478,
+   "decider_server_ms": 1032.9,
+   "llm": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11500.232800026424,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 10,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.6224
+    }
+   },
+   "decider_ms": 1748.1037999968976,
+   "decider_server_ms": 1050.5,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11142.056499957107,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 11,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.7382
+    }
+   },
+   "decider_ms": 1922.1537000266835,
+   "decider_server_ms": 941.1,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11120.352099998854,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 12,
+   "expected": {
+    "tool": "search_schemes"
+   },
+   "decider": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 0.5162
+    }
+   },
+   "decider_ms": 1764.526700018905,
+   "decider_server_ms": 961.3,
+   "llm": {
+    "tool": {
+     "label": "search_schemes",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11250.044299988076,
+   "llm_cost": 0.0
+  },
+  {
+   "i": 13,
+   "expected": {
+    "tool": "ask_more_questions"
+   },
+   "decider": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 0.6588
+    }
+   },
+   "decider_ms": 1895.6096000038087,
+   "decider_server_ms": 1036.7,
+   "llm": {
+    "tool": {
+     "label": "ask_more_questions",
+     "confidence": 1.0
+    }
+   },
+   "llm_ms": 11199.850099976175,
+   "llm_cost": 0.0
+  }
+ ],
+ "summary": {
+  "decider": {
+   "accuracy": 0.9286,
+   "decisions": 14,
+   "per_question": {
+    "tool": 0.9286
+   },
+   "latency_p50_ms": 1878.3,
+   "latency_p95_ms": 1994.6,
+   "usd_per_1k_decisions": 0.035,
+   "confident_share": 0.5714,
+   "accuracy_when_confident": 1.0,
+   "sent_to_human_at_threshold": 6
+  },
+  "llm": {
+   "accuracy": 1.0,
+   "decisions": 14,
+   "per_question": {
+    "tool": 1.0
+   },
+   "latency_p50_ms": 11199.9,
+   "latency_p95_ms": 11500.2,
+   "usd_per_1k_decisions": 0.0,
+   "confident_share": 1.0,
+   "accuracy_when_confident": 1.0,
+   "sent_to_human_at_threshold": 0
+  },
+  "speedup_p50": 5.96
+ },
+ "threshold": 0.7,
+ "llm_model": "qwen3.5-4b",
+ "llm_provider": "ugmdu",
+ "llm_where": "AWS User Group Madurai cloud (qwen3.5-4b)",
+ "decider_url": "https://da25tnxy06gjk.cloudfront.net",
+ "decider_mode": "ugmdu",
+ "ran_at": 1792378581.6730895,
+ "split": "test"
+}

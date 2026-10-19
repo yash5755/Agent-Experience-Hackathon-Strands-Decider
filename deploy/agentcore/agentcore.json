@@ -1,0 +1,45 @@
+{
+  "name": "BenefitBot",
+  "version": 1,
+  "managedBy": "CDK",
+  "runtimes": [
+    {
+      "name": "benefitbotRuntime",
+      "description": "BenefitBot: Find Indian government schemes you may be eligible for",
+      "build": "CodeZip",
+      "entrypoint": "main.py:invoke",
+      "codeLocation": "app/agent",
+      "runtimeVersion": "PYTHON_3_12",
+      "envVars": []
+    }
+  ],
+  "memories": [
+    {
+      "name": "benefitmemory",
+      "eventExpiryDuration": 30,
+      "strategies": [
+        {
+          "type": "SEMANTIC",
+          "namespaceTemplates": [
+            "/users/{actorId}/facts"
+          ]
+        },
+        {
+          "type": "USER_PREFERENCE",
+          "namespaceTemplates": [
+            "/users/{actorId}/preferences"
+          ]
+        }
+      ]
+    }
+  ],
+  "knowledgeBases": [],
+  "credentials": [],
+  "evaluators": [],
+  "onlineEvalConfigs": [],
+  "agentCoreGateways": [],
+  "policyEngines": [],
+  "configBundles": [],
+  "abTests": [],
+  "harnesses": []
+}

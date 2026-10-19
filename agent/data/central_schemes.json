@@ -1,0 +1,526 @@
+[
+  {
+    "slug": "pm-kisan",
+    "name": "PM-KISAN",
+    "full_name": "Pradhan Mantri Kisan Samman Nidhi",
+    "level": "central",
+    "state": null,
+    "category": ["farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Direct income support of Rs 6,000 per year in three installments to small and marginal farmers.",
+    "benefit": "Rs 6,000/year (Rs 2,000 per installment, three times a year) directly to bank account.",
+    "eligibility_criteria": [
+      "Must be a small or marginal farmer (cultivable landholding up to 2 hectares)",
+      "Must have a valid Aadhaar card",
+      "Must have a bank account linked to Aadhaar"
+    ],
+    "documents": ["Aadhaar card", "Land ownership records / Khatoni", "Bank passbook", "Mobile number"],
+    "application_steps": [
+      "Visit pmkisan.gov.in or the nearest Common Service Centre (CSC)",
+      "Click 'Farmer Corner' → 'New Farmer Registration'",
+      "Enter Aadhaar number and state",
+      "Fill in land and bank details",
+      "Submit; status can be checked online"
+    ],
+    "apply_url": "https://pmkisan.gov.in"
+  },
+  {
+    "slug": "ayushman-bharat",
+    "name": "Ayushman Bharat (PM-JAY)",
+    "full_name": "Pradhan Mantri Jan Arogya Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["general", "farmer", "woman", "senior"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": 2.5,
+    "description": "Health insurance cover of Rs 5 lakh per family per year for secondary and tertiary hospitalisation.",
+    "benefit": "Rs 5 lakh/year health cover for hospitalisation at empanelled hospitals, cashless.",
+    "eligibility_criteria": [
+      "Family must be listed in SECC 2011 database or meet deprivation criteria",
+      "Annual family income below Rs 2.5 lakh (approx)",
+      "No existing government health insurance"
+    ],
+    "documents": ["Aadhaar card", "Ration card", "Income certificate", "Family composition proof"],
+    "application_steps": [
+      "Visit pmjay.gov.in or nearest Ayushman Bharat Empanelled Hospital / CSC",
+      "Search eligibility by mobile or ration card number",
+      "If eligible, get Ayushman card printed at CSC",
+      "Use card for cashless treatment at empanelled hospitals"
+    ],
+    "apply_url": "https://pmjay.gov.in"
+  },
+  {
+    "slug": "pm-awas-yojana-gramin",
+    "name": "PMAY-G",
+    "full_name": "Pradhan Mantri Awas Yojana – Gramin",
+    "level": "central",
+    "state": null,
+    "category": ["general", "farmer", "woman"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": 1.8,
+    "description": "Financial assistance for construction of pucca houses for rural homeless and kutcha house dwellers.",
+    "benefit": "Rs 1.2 lakh (plains) or Rs 1.3 lakh (hilly/difficult areas) for house construction.",
+    "eligibility_criteria": [
+      "Must be houseless or living in kutcha/dilapidated house",
+      "Listed in SECC 2011 Awaiting List or identified through Awaas+ survey",
+      "Annual family income below Rs 1.8 lakh",
+      "Must not have availed housing scheme before"
+    ],
+    "documents": ["Aadhaar card", "Job card (MGNREGA)", "Bank account details", "Income certificate", "Land ownership document"],
+    "application_steps": [
+      "Contact Gram Panchayat or Block Development Officer",
+      "Get name verified in SECC / Awaas+ list",
+      "Submit application through Gram Panchayat",
+      "Funds released in installments directly to bank account after construction stages"
+    ],
+    "apply_url": "https://pmayg.nic.in"
+  },
+  {
+    "slug": "mgnrega",
+    "name": "MGNREGA",
+    "full_name": "Mahatma Gandhi National Rural Employment Guarantee Act",
+    "level": "central",
+    "state": null,
+    "category": ["general", "farmer", "woman"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Guarantees 100 days of wage employment per year to rural households whose adult members are willing to do unskilled manual work.",
+    "benefit": "100 days/year of employment at minimum wage (varies by state, approx Rs 200–350/day); paid to bank/post office.",
+    "eligibility_criteria": [
+      "Adult member of a rural household",
+      "Willing to do unskilled manual work",
+      "Register at Gram Panchayat"
+    ],
+    "documents": ["Aadhaar card", "Bank/post office account", "Photograph", "Address proof"],
+    "application_steps": [
+      "Apply for Job Card at Gram Panchayat with photograph and Aadhaar",
+      "Job Card issued within 15 days",
+      "Apply for work at Gram Panchayat when needed",
+      "Work must be provided within 15 days of application; otherwise unemployment allowance applies"
+    ],
+    "apply_url": "https://nrega.nic.in"
+  },
+  {
+    "slug": "sukanya-samriddhi",
+    "name": "Sukanya Samriddhi Yojana",
+    "full_name": "Sukanya Samriddhi Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["woman"],
+    "min_age": 0,
+    "max_age": 10,
+    "max_income_lpa": null,
+    "description": "Small savings scheme for girl children up to age 10, offering higher interest and tax benefits.",
+    "benefit": "Current interest rate ~8.2% p.a. (revised quarterly); tax-free maturity amount; minimum deposit Rs 250/year.",
+    "eligibility_criteria": [
+      "Girl child below 10 years of age",
+      "Account opened by natural or legal guardian",
+      "Maximum 2 accounts per family (one per girl child)"
+    ],
+    "documents": ["Birth certificate of girl child", "Guardian's Aadhaar and PAN", "Address proof"],
+    "application_steps": [
+      "Visit nearest post office or authorised bank",
+      "Fill SSY account opening form",
+      "Submit documents and initial deposit (min Rs 250)",
+      "Account matures 21 years from opening date"
+    ],
+    "apply_url": "https://www.indiapost.gov.in"
+  },
+  {
+    "slug": "pm-ujjwala",
+    "name": "PM Ujjwala Yojana",
+    "full_name": "Pradhan Mantri Ujjwala Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["woman"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": 1.5,
+    "description": "Free LPG connection to women from BPL households to replace cooking with solid fuels.",
+    "benefit": "Free LPG connection (deposit waived), subsidised cylinder refills.",
+    "eligibility_criteria": [
+      "Woman adult member of BPL household",
+      "Age 18 or above",
+      "No existing LPG connection in the household",
+      "Listed in SECC database or from SC/ST/PM-AWAS-G beneficiary/forest dweller/PVTG/tea garden families"
+    ],
+    "documents": ["Aadhaar card", "BPL ration card / SECC printout", "Bank account", "Passport photo"],
+    "application_steps": [
+      "Visit nearest LPG distributor (HP/Indane/Bharat Gas)",
+      "Fill Ujjwala application form",
+      "Submit documents",
+      "Connection provided free; first refill subsidy credited to bank"
+    ],
+    "apply_url": "https://pmuy.gov.in"
+  },
+  {
+    "slug": "pm-scholarship-central-armed",
+    "name": "PM Scholarship (Central Armed Police)",
+    "full_name": "Prime Minister's Scholarship Scheme for Central Armed Police Forces and Railway Protection Force",
+    "level": "central",
+    "state": null,
+    "category": ["student"],
+    "min_age": 18,
+    "max_age": 25,
+    "max_income_lpa": null,
+    "description": "Scholarship for wards of ex/serving personnel of CAPF and RPF pursuing professional degree courses.",
+    "benefit": "Rs 3,000/month (boys) and Rs 3,500/month (girls) for up to 5 years.",
+    "eligibility_criteria": [
+      "Ward of ex/serving CAPF or RPF personnel",
+      "Minimum 60% marks in Class XII",
+      "Enrolled in first year of professional degree (MBBS, BE, BEd, BBA, BCA, MBA, MCA etc.)"
+    ],
+    "documents": ["Aadhaar card", "Class XII marksheet", "Service/discharge certificate of parent", "College admission letter", "Bank account"],
+    "application_steps": [
+      "Register on National Scholarship Portal (scholarships.gov.in)",
+      "Fill application under 'Ministry of Home Affairs'",
+      "Upload documents",
+      "Institute verification and approval"
+    ],
+    "apply_url": "https://scholarships.gov.in"
+  },
+  {
+    "slug": "nsp-post-matric",
+    "name": "Post-Matric Scholarship (SC/ST/OBC)",
+    "full_name": "Post-Matric Scholarship for SC, ST and OBC students",
+    "level": "central",
+    "state": null,
+    "category": ["student"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": 2.5,
+    "description": "Financial assistance to SC, ST and OBC students pursuing post-matriculation courses.",
+    "benefit": "Maintenance allowance (Rs 380–1,200/month) + course fees reimbursement depending on category and course.",
+    "eligibility_criteria": [
+      "Belongs to SC, ST or OBC category",
+      "Enrolled in post-matric course (Class XI onwards)",
+      "Annual family income below Rs 2.5 lakh (SC/ST) or Rs 1 lakh (OBC)"
+    ],
+    "documents": ["Aadhaar card", "Caste certificate", "Income certificate", "Previous marksheet", "Institution bonafide certificate", "Bank account"],
+    "application_steps": [
+      "Apply on National Scholarship Portal (scholarships.gov.in) during notification window",
+      "Select correct scholarship under state/central ministry",
+      "Upload documents; get institution verification",
+      "Funds disbursed directly to bank account"
+    ],
+    "apply_url": "https://scholarships.gov.in"
+  },
+  {
+    "slug": "pm-vaya-vandana",
+    "name": "PM Vaya Vandana Yojana",
+    "full_name": "Pradhan Mantri Vaya Vandana Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["senior"],
+    "min_age": 60,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Pension scheme for senior citizens offering guaranteed 7.4% p.a. return for 10 years through LIC.",
+    "benefit": "Guaranteed pension of Rs 1,000–9,250/month for 10 years depending on investment (max Rs 15 lakh).",
+    "eligibility_criteria": [
+      "Age 60 years or above",
+      "Indian resident",
+      "Investment between Rs 1.5 lakh and Rs 15 lakh"
+    ],
+    "documents": ["Aadhaar card", "Age proof", "Bank account", "Photograph"],
+    "application_steps": [
+      "Visit nearest LIC branch or apply on licindia.in",
+      "Fill PMVVY application form",
+      "Submit investment amount and documents",
+      "Pension credited monthly/quarterly/half-yearly/yearly as chosen"
+    ],
+    "apply_url": "https://licindia.in"
+  },
+  {
+    "slug": "indira-gandhi-national-disability-pension",
+    "name": "IGNDPS",
+    "full_name": "Indira Gandhi National Disability Pension Scheme",
+    "level": "central",
+    "state": null,
+    "category": ["disabled"],
+    "min_age": 18,
+    "max_age": 79,
+    "max_income_lpa": 1.0,
+    "description": "Monthly pension for persons with severe or multiple disabilities who are below the poverty line.",
+    "benefit": "Rs 300/month (central share); states may top up. Disbursed through bank/post office.",
+    "eligibility_criteria": [
+      "Age 18–79 years",
+      "Severe disability (80% or more) or multiple disabilities",
+      "Below Poverty Line (BPL)",
+      "Not receiving any other pension from central/state government"
+    ],
+    "documents": ["Aadhaar card", "BPL card", "Disability certificate (80%+ from CMO)", "Bank/post office account", "Age proof"],
+    "application_steps": [
+      "Apply at Gram Panchayat / Block Office / District Social Welfare Office",
+      "Submit disability certificate and BPL proof",
+      "Verification by district authority",
+      "Pension credited monthly to bank/post office account"
+    ],
+    "apply_url": "https://nsap.nic.in"
+  },
+  {
+    "slug": "ignoaps",
+    "name": "IGNOAPS",
+    "full_name": "Indira Gandhi National Old Age Pension Scheme",
+    "level": "central",
+    "state": null,
+    "category": ["senior"],
+    "min_age": 60,
+    "max_age": null,
+    "max_income_lpa": 1.0,
+    "description": "Monthly pension for BPL senior citizens.",
+    "benefit": "Rs 200/month (age 60–79); Rs 500/month (age 80+). States typically add an equal or higher amount.",
+    "eligibility_criteria": [
+      "Age 60 or above",
+      "Below Poverty Line",
+      "Not receiving any other pension"
+    ],
+    "documents": ["Aadhaar card", "BPL card/ration card", "Age proof", "Bank/post office account"],
+    "application_steps": [
+      "Apply at Gram Panchayat or Block Development Office",
+      "Submit form with age proof and BPL certificate",
+      "District verification and approval",
+      "Pension transferred monthly"
+    ],
+    "apply_url": "https://nsap.nic.in"
+  },
+  {
+    "slug": "pm-fasal-bima",
+    "name": "PM Fasal Bima Yojana",
+    "full_name": "Pradhan Mantri Fasal Bima Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Crop insurance scheme that provides financial support to farmers in case of crop failure due to natural calamities, pests or disease.",
+    "benefit": "Claim payout based on crop loss assessment; premium as low as 1.5–2% for kharif/rabi, 5% for horticulture.",
+    "eligibility_criteria": [
+      "Farmer cultivating notified crops in notified areas",
+      "Both loanee and non-loanee farmers eligible",
+      "Enrolment before cut-off date for each season"
+    ],
+    "documents": ["Aadhaar card", "Land records (7/12 or equivalent)", "Bank account", "Sowing certificate (for non-loanee)"],
+    "application_steps": [
+      "Apply through nearest bank (for loanee farmers, automatic enrolment)",
+      "Non-loanee: apply via CSC or PMFBY portal (pmfby.gov.in)",
+      "Pay premium amount",
+      "Claims assessed by state government after crop loss notification"
+    ],
+    "apply_url": "https://pmfby.gov.in"
+  },
+  {
+    "slug": "kisan-credit-card",
+    "name": "Kisan Credit Card",
+    "full_name": "Kisan Credit Card Scheme",
+    "level": "central",
+    "state": null,
+    "category": ["farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Provides farmers with timely credit for agricultural needs at concessional interest rates.",
+    "benefit": "Credit up to Rs 3 lakh at 4% interest p.a. (with interest subvention); revolving credit limit.",
+    "eligibility_criteria": [
+      "Farmer, sharecropper, oral lessee or tenant farmer",
+      "Allied activity farmers (fisheries, animal husbandry) also eligible",
+      "Must have agricultural land or lease agreement"
+    ],
+    "documents": ["Aadhaar card", "Land records or lease agreement", "Passport photo", "Bank account"],
+    "application_steps": [
+      "Apply at nearest bank branch (SBI, cooperative bank, RRB etc.)",
+      "Fill KCC application form",
+      "Submit land and identity documents",
+      "Credit limit sanctioned based on land area and crop; card issued"
+    ],
+    "apply_url": "https://www.nabard.org"
+  },
+  {
+    "slug": "pm-mudra",
+    "name": "PM Mudra Yojana",
+    "full_name": "Pradhan Mantri Mudra Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["general", "woman", "farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Collateral-free micro-loans to non-corporate, non-farm small/micro enterprises.",
+    "benefit": "Shishu: up to Rs 50,000 | Kishor: Rs 50,001–5 lakh | Tarun: Rs 5–10 lakh; no processing fee for Shishu.",
+    "eligibility_criteria": [
+      "Non-farm micro/small enterprise or individual entrepreneur",
+      "Age 18 or above",
+      "No collateral required for Shishu category",
+      "Business plan required for Kishor/Tarun"
+    ],
+    "documents": ["Aadhaar card", "PAN card", "Business proof / GST", "Bank statement (6 months)", "Passport photo"],
+    "application_steps": [
+      "Apply at any bank, MFI or NBFC, or online at udyamimitra.in",
+      "Fill Mudra loan application",
+      "Submit documents and business details",
+      "Loan disbursed after bank appraisal"
+    ],
+    "apply_url": "https://www.mudra.org.in"
+  },
+  {
+    "slug": "national-family-benefit",
+    "name": "NFBS",
+    "full_name": "National Family Benefit Scheme",
+    "level": "central",
+    "state": null,
+    "category": ["general", "woman", "farmer"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": 1.0,
+    "description": "One-time lump sum assistance to BPL households on death of the primary breadwinner.",
+    "benefit": "Rs 20,000 one-time payment to bereaved BPL household.",
+    "eligibility_criteria": [
+      "Death of primary breadwinner aged 18–59",
+      "Household below poverty line",
+      "Claim within 1 year of death"
+    ],
+    "documents": ["Death certificate", "BPL card", "Aadhaar of deceased and claimant", "Age proof of deceased", "Bank account of claimant"],
+    "application_steps": [
+      "Apply at District Social Welfare Office or Block Office within 1 year",
+      "Submit death certificate and BPL proof",
+      "District verification",
+      "Amount transferred to claimant's bank account"
+    ],
+    "apply_url": "https://nsap.nic.in"
+  },
+  {
+    "slug": "pm-svamitva",
+    "name": "SVAMITVA",
+    "full_name": "Survey of Villages and Mapping with Improvised Technology in Village Areas",
+    "level": "central",
+    "state": null,
+    "category": ["general", "farmer", "woman"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Provides property rights to rural household owners by mapping land parcels using drones.",
+    "benefit": "Legal ownership document (Property Card / Rights Record) for residential land in villages.",
+    "eligibility_criteria": [
+      "Resident of a village covered under SVAMITVA survey",
+      "Occupying residential land (abadi area)"
+    ],
+    "documents": ["Aadhaar card", "Existing occupancy proof (electricity bill, etc.)", "Village panchayat record"],
+    "application_steps": [
+      "State revenue department conducts drone survey",
+      "Provisional record shared for objections",
+      "Property card distributed by Gram Panchayat or state portal",
+      "Card can be used as collateral for bank loans"
+    ],
+    "apply_url": "https://svamitva.nic.in"
+  },
+  {
+    "slug": "atal-pension-yojana",
+    "name": "Atal Pension Yojana",
+    "full_name": "Atal Pension Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["general", "farmer", "woman"],
+    "min_age": 18,
+    "max_age": 40,
+    "max_income_lpa": null,
+    "description": "Guaranteed pension scheme for unorganised sector workers; government co-contributes for eligible subscribers.",
+    "benefit": "Guaranteed pension of Rs 1,000–5,000/month at age 60. Government contributes 50% (up to Rs 1,000/year) for 5 years for non-tax-payers who joined by March 2016.",
+    "eligibility_criteria": [
+      "Age 18–40 years",
+      "Indian citizen",
+      "Has a savings bank account",
+      "Not an income tax payer (for government co-contribution)"
+    ],
+    "documents": ["Aadhaar card", "Savings bank account", "Mobile number"],
+    "application_steps": [
+      "Apply at any bank or post office",
+      "Fill APY subscriber registration form",
+      "Choose pension amount (Rs 1,000/2,000/3,000/4,000/5,000/month)",
+      "Monthly contribution auto-debited from savings account"
+    ],
+    "apply_url": "https://npscra.nsdl.co.in"
+  },
+  {
+    "slug": "pm-jan-dhan",
+    "name": "PM Jan Dhan Yojana",
+    "full_name": "Pradhan Mantri Jan Dhan Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["general", "woman", "farmer"],
+    "min_age": 10,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Zero-balance bank account with RuPay debit card, accident insurance, and overdraft facility.",
+    "benefit": "Zero-balance account; RuPay card with Rs 2 lakh accident insurance; Rs 10,000 overdraft for active accounts.",
+    "eligibility_criteria": [
+      "Any Indian citizen above 10 years",
+      "No existing bank account (or can open under PMJDY for benefits)",
+      "Basic KYC documents"
+    ],
+    "documents": ["Aadhaar card (or any officially valid document for KYC)", "Passport photo"],
+    "application_steps": [
+      "Visit nearest bank branch or Business Correspondent (Bank Mitra)",
+      "Fill account opening form",
+      "Submit KYC documents",
+      "RuPay card issued; account usable immediately"
+    ],
+    "apply_url": "https://pmjdy.gov.in"
+  },
+  {
+    "slug": "pmgsy",
+    "name": "PMGSY",
+    "full_name": "Pradhan Mantri Gram Sadak Yojana",
+    "level": "central",
+    "state": null,
+    "category": ["general"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "All-weather road connectivity to unconnected rural habitations. Benefit is community-level infrastructure.",
+    "benefit": "All-weather road access to village; not a direct cash benefit.",
+    "eligibility_criteria": [
+      "Habitation without all-weather road connectivity",
+      "Population >= 500 (plains), >= 250 (hilly/tribal/desert)"
+    ],
+    "documents": [],
+    "application_steps": [
+      "Gram Panchayat or district submits proposal through PMGSY portal",
+      "State-level approval and central sanction",
+      "Construction by state PWD or contracted agency"
+    ],
+    "apply_url": "https://pmgsy.nic.in"
+  },
+  {
+    "slug": "stand-up-india",
+    "name": "Stand-Up India",
+    "full_name": "Stand-Up India Scheme",
+    "level": "central",
+    "state": null,
+    "category": ["woman", "disabled", "general"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Bank loans between Rs 10 lakh and Rs 1 crore to SC/ST and women entrepreneurs for greenfield enterprises.",
+    "benefit": "Loan Rs 10 lakh–1 crore at concessional rate; composite loan (term + working capital).",
+    "eligibility_criteria": [
+      "SC/ST borrower, or woman borrower",
+      "Age 18 or above",
+      "Greenfield enterprise (first-time in manufacturing/services/trading)",
+      "Must not be in default with any bank or financial institution"
+    ],
+    "documents": ["Aadhaar card", "PAN card", "Caste certificate (if SC/ST)", "Business plan", "Bank statements", "Lease/ownership of premises"],
+    "application_steps": [
+      "Apply at any scheduled commercial bank branch or on standupmitra.in",
+      "Submit business plan and documents",
+      "Bank appraisal; loan sanctioned within 3 weeks",
+      "Loan disbursed; repayment 7 years"
+    ],
+    "apply_url": "https://www.standupmitra.in"
+  }
+]

@@ -1,0 +1,146 @@
+{
+ "pattern_tag": "#tool-selection",
+ "agentcore_features": [
+  "AgentCore Memory (SEMANTIC, USER_PREFERENCE strategies)"
+ ],
+ "pattern_doc": "REUSABLE DECISION PATTERN: scheme tool selection  (#tool-selection)\n\nWhat it does\n    Before BenefitBot searches for Indian government schemes, Strands Decider 2B reads the\n    user's profile collected so far and picks which tool to call:\n\n        search_schemes       \u00e2\u20ac\u201d the user's state is known; search central + state schemes now\n        ask_more_questions   \u00e2\u20ac\u201d key profile fields (especially state) are missing; ask first\n\n    This single binary decision keeps the choice sharp and the decider confident. When\n    confidence is below the threshold (0.6), all tools are kept and the LLM decides,\n    so no opportunity is lost.\n\nTyped questions and options\n    `tool` (choice): built from the two tools' docstrings by `questions_for()` from\n    `decider_kit.patterns.tool_selection`, plus `none` (answer directly).\n\nWiring (where it sits in the agent's path)\n    Between the user message and the Strands Agent:\n\n        from agent.decision import selector_for\n        selector = selector_for(decider)\n        narrowed_tools = selector.tools_for(user_message, history=conversation_history)\n        agent = Agent(model=..., tools=narrowed_tools + [get_document_checklist, get_user_profile])\n        result = agent(user_message)\n\nHow to reuse it in your own agent\n    1. Replace search_schemes and ask_more_questions with your own tools.\n    2. Give every tool a clear one-line docstring: that line becomes the option the decider\n       reads when picking.\n    3. Adjust the `context` hint in `selector_for` to describe your domain.\n    4. Tune `threshold` (default 0.6): lower \u00e2\u2020\u2019 LLM decides more often; higher \u00e2\u2020\u2019 decider\n       narrows more aggressively.\n    5. Keep the state sent to the decider short and factual \u00e2\u20ac\u201d no LLM-invented inferences.",
+ "questions_code": "QUESTIONS = {\n    \"tool\": Decider.choice(\n        \"Given the user profile, which tool should the agent call next?\",\n        {\n            \"search_schemes\": (\n                \"the user's state IS known \u00e2\u20ac\u201d search central and state government schemes now\"\n            ),\n            \"ask_more_questions\": (\n                \"the user's state is unknown OR key profile fields are missing \u00e2\u20ac\u201d \"\n                \"ask the user one clarifying question before searching\"\n            ),\n            \"none\": \"no tool needed; the agent can answer directly\",\n        },\n    )\n}",
+ "agent_md": "# Use case\n\n- **Pitch:** BenefitBot helps rural Indians discover government schemes they may be eligible for,\n  get a personalised document checklist, and receive everything in their preferred language.\n- **Who it is for:** Rural individuals in India with limited digital literacy, and social workers\n  or NGO volunteers helping beneficiaries navigate central and state government schemes.\n- **Features:**\n  - asks the user a few conversational questions to build a profile (state, age, occupation,\n    income, category);\n  - Strands Decider 2B picks the right search tool for each profile \u00e2\u20ac\u201d central schemes, state\n    schemes, both, or \"ask one more question\" \u00e2\u20ac\u201d before the LLM turn;\n  - returns matched schemes with potential vs confirmed eligibility clearly distinguished;\n  - generates a personalised document checklist and application guide per scheme;\n  - responds in the user's preferred language (English default; Hindi, Tamil, Telugu, Bengali,\n    Marathi on request);\n  - deployed on Amazon Bedrock AgentCore Runtime with Memory so the profile is remembered\n    across sessions.\n- **The decision handed to Strands Decider 2B:** given the user profile collected so far, which\n  tool should handle this request \u00e2\u20ac\u201d search central schemes, search state schemes, search both,\n  or ask the user one more clarifying question? (`#tool-selection`)\n- **Why a decision model:** the tool selection runs on every turn; it must be fast, cheap and\n  correct. A specialised 2B model is far cheaper and faster than asking the full LLM to pick.\n- **Amazon Bedrock:** the conversation and tool use (Amazon Nova Pro on deployment).\n",
+ "llm_provider_local_runs": "ugmdu",
+ "agent_name": "BenefitBot",
+ "bench": {
+  "summary": {
+   "decider": {
+    "accuracy": 0.9286,
+    "decisions": 14,
+    "per_question": {
+     "tool": 0.9286
+    },
+    "latency_p50_ms": 1878.3,
+    "latency_p95_ms": 1994.6,
+    "usd_per_1k_decisions": 0.035,
+    "confident_share": 0.5714,
+    "accuracy_when_confident": 1.0,
+    "sent_to_human_at_threshold": 6
+   },
+   "llm": {
+    "accuracy": 1.0,
+    "decisions": 14,
+    "per_question": {
+     "tool": 1.0
+    },
+    "latency_p50_ms": 11199.9,
+    "latency_p95_ms": 11500.2,
+    "usd_per_1k_decisions": 0.0,
+    "confident_share": 1.0,
+    "accuracy_when_confident": 1.0,
+    "sent_to_human_at_threshold": 0
+   },
+   "speedup_p50": 5.96
+  },
+  "decider_model": "strands-decider-2b-hobson-v19",
+  "decider_mode": "ugmdu",
+  "llm_model": "qwen3.5-4b",
+  "cases": 14,
+  "split": "test",
+  "threshold": 0.7
+ },
+ "bench_table": "Decider: strands-decider-2b-hobson-v19 (ugmdu). 14 labelled cases, 14 decisions.\n\n| | Strands Decider 2B | qwen3.5-4b |\n|---|---|---|\n| Accuracy | 92.9% | 100.0% |\n| Latency p50 per decision | 1878 ms | 11200 ms |\n| Latency p95 | 1995 ms | 11500 ms |\n| Cost per 1,000 decisions | $0.0350 | $0.0000 |\n| Answered alone at confidence >= 0.7 | 57% | 100% |\n| Accuracy when confident | 100.0% | 100.0% |\n\nAt the median the decider was 6.0x faster than the LLM.\n",
+ "demo_turns": [
+  {
+   "user": "Hello, I want to know which government schemes I can get.",
+   "reply": "Namaste! Hello there! \ud83d\ude0a  \nTo help you find the right schemes for you, could you please tell me a few things:\n\n1. Which **state** do you live in?  \n2. Are you a farmer/woman/student/senior/disabled/general category?  \n3. Approximately how much is your **income**? (Monthly, yearly, or LPA \u2013 whatever fits best).  \n4. How old are you now?  \n\nJust tell me these four things and I'll help you find the best schemes for you!",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "ask_more_questions",
+     "confidence": 0.433,
+     "narrowed": false,
+     "probabilities": {
+      "search_schemes": 0.377,
+      "ask_more_questions": 0.433,
+      "none": 0.191
+     },
+     "verdict": "ask_more_questions",
+     "decider_ms": 2133.3033999999316
+    }
+   ],
+   "latency_ms": 24817
+  },
+  {
+   "user": "I am a farmer from Tamil Nadu. I am 45 years old and my income is about 1.5 lakh per year.",
+   "reply": "Namaste! I'm happy to share these with you. Here are some schemes in Tamil Nadu & nationwide that might suit a farmer like you:\n\n* **PM-KISAN** \u2013 Gives \u20b96,000 each year in 3 installments directly to your bank. You may be eligible based on what you told me.\n\n* **Ayushman Bharat (PM-JAY)** \u2013 Health insurance of \u20b95 lakh per family for hospitalisation, paid at empanelled hospitals without cash. POTENTIAL eligibility.\n\n* **PMAY-G (Pradhan Mantri Awas Yojana Gramin)** \u2013 Can help build a house: \u20b91.2\u20131.3 lakh, depending on whether you're in plains or hilly area. POTENTIAL.\n\n* **MGNREGA** \u2013 Up to 100 days of work per year at minimum wage rates (approx \u20b9200\u2013\u20b9350/day). POTENTIAL.\n\n* **PM Fasal Bima Yojana** \u2013 Crop insurance; you can get claim payout if there's crop loss, premiums start from a low percentage. POTENTIAL.\n\n* **Kisan Credit Card** \u2013 Loan up to \u20b93 lakh at low interest rate; good for farm expenses. POTENTIAL.\n\n* **PM Mudra Yojana** \u2013 Loans from \u20b950,000 to \u20b910 lakh for business/asset purchase for farmers. POTENTIAL.\n\n---\n\n**State Scheme (Tamil Nadu):**\n\n* **CM Green Farms Scheme (TN)** \u2013 Up to 100% subsidy on solar pump sets for small and marginal farmers. POTENTIAL.\n\n---\n\nWould you like to know more about any of these? For example, how much money each gives or what documents are needed to apply? Say \"yes\" for a particular scheme and I'll give details, including what documents you might need.",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "search_schemes",
+     "confidence": 0.657,
+     "narrowed": true,
+     "probabilities": {
+      "search_schemes": 0.657,
+      "ask_more_questions": 0.334,
+      "none": 0.008
+     },
+     "verdict": "search_schemes",
+     "decider_ms": 2263.71570000083
+    }
+   ],
+   "latency_ms": 86340
+  },
+  {
+   "user": "Tell me more about PM-KISAN. What documents do I need?",
+   "reply": "Here are the details for **PM-KISAN**:\n\n**Benefit:**  \n- \u20b96,000 per year (\u20b92,000 given in three installments) directly to your bank account.\n\n**POTENTIAL documents you will need:**\n- Aadhaar card\n- Land ownership records / Khatoni\n- Bank passbook\n- Mobile number\n\n**How to apply:**  \n1. Visit *pmkisan.gov.in* or go to a nearby Common Service Centre (CSC).  \n2. Click 'Farmer Corner' \u2192 'New Farmer Registration'.  \n3. Enter your Aadhaar number and state, and fill in land and bank details.  \n4. Submit the form; you can check the status of your application online.\n\n**Note:** Eligibility is POTENTIAL based on what was shared. Official verification will happen at the time of application.",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "search_schemes",
+     "confidence": 0.851,
+     "narrowed": true,
+     "probabilities": {
+      "search_schemes": 0.851,
+      "ask_more_questions": 0.112,
+      "none": 0.037
+     },
+     "verdict": "search_schemes",
+     "decider_ms": 2728.3320000005915
+    }
+   ],
+   "latency_ms": 37914
+  },
+  {
+   "user": "Tamil la sollu",
+   "reply": "\u0ba8\u0ba9\u0bcd\u0bb1\u0bbf! \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0bae\u0bbf\u0bb4\u0bbf\u0bb2\u0bcd \u0baa\u0bc7\u0b9a\u0bc1\u0d35\u0d3e\u0b99\u0bcd\u0b95. \n\n\u0b8f\u0bb1\u0bcd\u0b95\u0ba9\u0bb5\u0bc7, \u0ba8\u0bbe\u0ba9\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0ba3\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bb1\u0bbf\u0baf \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd. \u0b86\u0ba9\u0bbe\u0bb2\u0bcd, \u0b92\u0bb0\u0bc1 \u0b9a\u0bbf\u0bb2 \u0ba4\u0bb0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd:\n- \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0bae\u0bbe\u0ba8\u0bbf\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?\n- \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0baf\u0ba4\u0bc1 \u0b8e\u0ba9\u0bcd\u0ba9?\n\n\u0b87\u0ba4\u0bc8 \u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd, \u0ba8\u0bbe\u0ba9\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b8f\u0bb1\u0bcd\u0bb1 \u0b9a\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bae\u0bbe\u0ba9 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0bb2\u0bbe\u0bae\u0bcd. \u0b95\u0bb5\u0ba9\u0bae\u0bbe\u0b95!",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "search_schemes",
+     "confidence": 0.701,
+     "narrowed": true,
+     "probabilities": {
+      "search_schemes": 0.701,
+      "ask_more_questions": 0.272,
+      "none": 0.027
+     },
+     "verdict": "search_schemes",
+     "decider_ms": 3360.7826000006753
+    }
+   ],
+   "latency_ms": 28823
+  }
+ ],
+ "deployment": {
+  "runtime_arn": "arn:aws:bedrock-agentcore:us-east-1:951247597258:runtime/BenefitBot_benefitbotRuntime-DX4ijw4Lh6",
+  "region": "us-east-1",
+  "deployed_at": 1792435929.30387,
+  "deploy_seconds": 427,
+  "decider_mode": "ugmdu",
+  "bedrock_model": "us.amazon.nova-pro-v1:0",
+  "eager": false,
+  "memories": {
+   "benefitmemory": "BenefitBot_benefitmemory-ABUD5ABw3j"
+  },
+  "gateways": {}
+ },
+ "repo_url": "",
+ "video_url": ""
+}

@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BenefitBot</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── reset & tokens ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0a0a0a;
+  --sidebar:   #111111;
+  --surface:   #1a1a1a;
+  --surface2:  #222222;
+  --border:    #2a2a2a;
+  --border2:   #333333;
+  --ink:       #ececec;
+  --ink2:      #a0a0a0;
+  --ink3:      #666666;
+  --accent:    #f97316;   /* warm orange */
+  --accent2:   #22c55e;   /* green */
+  --blue:      #3b82f6;
+  --amber:     #f59e0b;
+  --red:       #ef4444;
+  --radius:    12px;
+  --font:      'Inter', -apple-system, sans-serif;
+  --mono:      'JetBrains Mono', monospace;
+}
+
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+
+/* ─── SIDEBAR ─────────────────────────────────────────── */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  gap: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+}
+.logo-icon {
+  width: 32px; height: 32px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.logo-name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.3px;
+}
+.logo-name em { color: var(--accent); font-style: normal; }
+
+.new-chat-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  font: 13px var(--font);
+  font-weight: 500;
+  cursor: pointer;
+  transition: .15s;
+  width: 100%;
+}
+.new-chat-btn:hover { background: var(--surface2); border-color: var(--border2); }
+.new-chat-btn svg { width:15px; height:15px; flex-shrink:0; }
+
+.sidebar-section { display: flex; flex-direction: column; gap: 6px; }
+.sidebar-label { font-size: 11px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: .08em; padding: 0 4px; }
+
+.sidebar-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: .15s;
+  border: 1px solid transparent;
+}
+.sidebar-item:hover { background: var(--surface); color: var(--ink); }
+.sidebar-item.active { background: var(--surface2); color: var(--ink); border-color: var(--border2); }
+.sidebar-item .dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.dot-green  { background: var(--accent2); box-shadow: 0 0 6px var(--accent2); }
+.dot-orange { background: var(--accent);  box-shadow: 0 0 6px var(--accent);  }
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--ink3);
+  line-height: 1.7;
+}
+
+/* ─── MAIN ────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  position: relative;
+}
+
+/* top strip */
+.topstrip {
+  height: 52px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 12px;
+}
+.topstrip-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.topstrip-badges { margin-left: auto; display: flex; gap: 8px; }
+.badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--border2);
+  color: var(--ink3);
+  white-space: nowrap;
+}
+.badge b { color: var(--ink2); }
+
+/* ─── SPLIT CONTENT ──────────────────────────────────── */
+.content-area {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+/* ─── CHAT AREA ──────────────────────────────────────── */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 1px solid var(--border);
+}
+
+/* messages */
+#log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* welcome */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 40px 24px;
+  text-align: center;
+  gap: 20px;
+}
+.welcome-icon {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ea580c 100%);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 0 0 1px rgba(249,115,22,.3), 0 8px 32px rgba(249,115,22,.2);
+}
+.welcome h2 {
+  font-size: 22px; font-weight: 700;
+  background: linear-gradient(135deg, #fff 30%, var(--ink2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.welcome p { color: var(--ink2); font-size: 14px; max-width: 420px; }
+
+.suggestion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  max-width: 640px;
+}
+.sug {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: .15s;
+  font-size: 12px;
+}
+.sug:hover { background: var(--surface2); border-color: var(--border2); transform: translateY(-1px); }
+.sug .sug-ico { font-size: 18px; margin-bottom: 6px; }
+.sug .sug-title { font-weight: 600; color: var(--ink); font-size: 12px; }
+.sug .sug-desc { color: var(--ink3); font-size: 11px; margin-top: 2px; }
+
+/* message rows */
+.msg-row {
+  padding: 0 24px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.msg-row + .msg-row { margin-top: 24px; }
+
+.msg-row.user .bubble {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 4px 16px;
+  padding: 12px 16px;
+  max-width: 75%;
+  margin-left: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.msg-row.user .bubble img { height: 80px; border-radius: 8px; display: block; margin-bottom: 8px; }
+
+.msg-row.bot { display: flex; gap: 14px; align-items: flex-start; }
+.bot-avatar {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; margin-top: 2px;
+}
+.msg-row.bot .bubble {
+  flex: 1;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.bubble-meta { color: var(--ink3); font-size: 11px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+/* typing dots */
+.typing { display: inline-flex; gap: 4px; align-items: center; padding: 4px 0; }
+.typing span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--ink3);
+  animation: blink 1.4s infinite;
+}
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%,80%,100%{opacity:.25} 40%{opacity:1} }
+
+/* typewriter cursor */
+.cursor {
+  display: inline-block;
+  width: 2px; height: 14px;
+  background: var(--ink2);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink-cur .7s step-end infinite;
+}
+@keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ─── INPUT SECTION ──────────────────────────────────── */
+.input-section {
+  flex-shrink: 0;
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--border);
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.lang-row {
+  display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.lang-pill {
+  font-size: 12px; padding: 4px 12px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--ink3);
+  cursor: pointer;
+  transition: .15s;
+  font-family: var(--font);
+}
+.lang-pill:hover { border-color: var(--border2); color: var(--ink2); }
+.lang-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.input-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color .15s;
+  display: flex;
+  flex-direction: column;
+}
+.input-box:focus-within { border-color: var(--border2); }
+
+.att-row { display: flex; gap: 8px; padding: 10px 14px 0; }
+.att-row img { height: 48px; border-radius: 8px; border: 1px solid var(--border); }
+.att-row:empty { display: none; }
+
+.input-row { display: flex; align-items: flex-end; gap: 8px; padding: 10px 10px 10px 16px; }
+
+textarea#m {
+  flex: 1;
+  background: transparent;
+  border: none; outline: none;
+  color: var(--ink);
+  font: 14px var(--font);
+  resize: none;
+  min-height: 24px; max-height: 160px;
+  line-height: 1.6;
+}
+textarea#m::placeholder { color: var(--ink3); }
+
+.input-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.btn-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--ink3);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: .15s;
+}
+.btn-icon:hover { background: var(--surface2); color: var(--ink2); }
+.btn-send {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  transition: .15s;
+  flex-shrink: 0;
+}
+.btn-send:hover { background: #ea580c; }
+.btn-send:disabled { background: var(--surface2); color: var(--ink3); cursor: default; }
+
+/* ─── DECISION PANEL ─────────────────────────────────── */
+.dec-panel {
+  width: 360px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--sidebar);
+}
+
+.dec-panel-head {
+  padding: 16px 18px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.dec-panel-head h3 {
+  font-size: 12px; font-weight: 600;
+  color: var(--ink3); text-transform: uppercase; letter-spacing: .08em;
+  display: flex; align-items: center; gap: 7px;
+}
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent2);
+  box-shadow: 0 0 6px var(--accent2);
+  animation: livepulse 2s ease-in-out infinite;
+}
+@keyframes livepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+.dec-panel-head p { font-size: 12px; color: var(--ink3); margin-top: 4px; }
+
+#dec {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dec-empty {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; height: 100%;
+  text-align: center; gap: 10px; padding: 24px;
+}
+.dec-empty svg { opacity: .2; }
+.dec-empty p { color: var(--ink3); font-size: 12px; line-height: 1.7; max-width: 220px; }
+
+/* decision card */
+.dcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  animation: fadeUp .3s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+.dcard-head {
+  padding: 11px 14px 10px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.dcard-left { display: flex; flex-direction: column; gap: 2px; }
+.dcard-label { font-size: 10px; color: var(--ink3); font-weight: 500; }
+.dcard-tool  { font-size: 13px; font-weight: 600; color: var(--ink); }
+.dcard-tag   { font: 10px var(--mono); color: var(--ink3); }
+
+/* arc */
+.arc-wrap { position: relative; width: 46px; height: 46px; flex-shrink: 0; }
+.arc-wrap svg { position: absolute; inset: 0; }
+.arc-pct {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 600 11px var(--font);
+}
+
+/* verdict */
+.dverdict {
+  margin: 8px 14px 4px;
+  display: inline-flex; align-items: center; gap: 5px;
+  font: 500 11px var(--font);
+  padding: 3px 10px; border-radius: 99px; border: 1px solid;
+}
+.dverdict::before { content:''; width:6px;height:6px;border-radius:50%;background:currentColor; }
+.dv-search_schemes     { color:var(--accent2); border-color:rgba(34,197,94,.3);  background:rgba(34,197,94,.08); }
+.dv-ask_more_questions { color:var(--amber);   border-color:rgba(245,158,11,.3); background:rgba(245,158,11,.08); }
+.dv-none               { color:var(--ink3);    border-color:var(--border); }
+.dv-proceed            { color:var(--accent2); border-color:rgba(34,197,94,.3);  background:rgba(34,197,94,.08); }
+.dv-guide              { color:var(--amber);   border-color:rgba(245,158,11,.3); background:rgba(245,158,11,.08); }
+.dv-deny               { color:var(--red);     border-color:rgba(239,68,68,.3);  background:rgba(239,68,68,.08); }
+
+/* bars */
+.dcard-bars { padding: 8px 14px 10px; display: flex; flex-direction: column; gap: 6px; }
+.bar-row    { display: grid; grid-template-columns: 120px 1fr 36px; gap: 8px; align-items: center; }
+.bar-name   { font: 11px var(--mono); color: var(--ink3); overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+.bar-track  { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+.bar-fill   { height: 100%; border-radius: 99px; transition: width .6s cubic-bezier(.16,1,.3,1); }
+.bar-val    { font: 11px var(--mono); color: var(--ink3); text-align: right; }
+
+.dcard-foot {
+  padding: 7px 14px;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 12px;
+  font: 10px var(--mono); color: var(--ink3);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══════════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">🏛️</div>
+    <div class="logo-name">Benefit<em>Bot</em></div>
+  </div>
+
+  <button class="new-chat-btn" onclick="newChat()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+    New conversation
+  </button>
+
+  <div class="sidebar-section">
+    <div class="sidebar-label">Status</div>
+    <div class="sidebar-item active">
+      <span class="dot dot-green"></span>
+      <span id="llm-label">Loading…</span>
+    </div>
+    <div class="sidebar-item">
+      <span class="dot dot-orange"></span>
+      <span id="dec-label">Decider…</span>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-label">Explore</div>
+    <div class="sidebar-item" onclick="sendText('What schemes are available for farmers?')">🌾 Farmer schemes</div>
+    <div class="sidebar-item" onclick="sendText('Schemes for women in Karnataka')">👩 Women schemes</div>
+    <div class="sidebar-item" onclick="sendText('Student scholarships for SC category')">🎓 Scholarships</div>
+    <div class="sidebar-item" onclick="sendText('Old age pension for BPL family')">👴 Senior citizen</div>
+    <div class="sidebar-item" onclick="sendText('Free health insurance for rural family')">💊 Health schemes</div>
+    <div class="sidebar-item" onclick="sendText('Housing scheme for rural homeless')">🏠 Housing</div>
+  </div>
+
+  <div class="sidebar-footer">
+    Built with the AWS Student Builder Group VVCE<br>
+    Strands Decider hackathon kit · Apache-2.0
+  </div>
+</aside>
+
+<!-- ═══ MAIN ═══════════════════════════════════════════════ -->
+<div class="main">
+  <div class="topstrip">
+    <span class="topstrip-title">BenefitBot — Government Schemes Finder</span>
+    <div class="topstrip-badges">
+      <div class="badge">LLM <b id="llm-badge">…</b></div>
+      <div class="badge">Decider <b id="dec-badge">…</b></div>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- chat -->
+    <div class="chat-area">
+      <div id="log">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon">🏛️</div>
+          <h2>What schemes can I help you find?</h2>
+          <p>Tell me your state, age, occupation and income and I'll find every government scheme you may be eligible for.</p>
+          <div class="suggestion-grid">
+            <div class="sug" onclick="sendSug(this)">
+              <div class="sug-ico">🌾</div>
+              <div class="sug-title">Farmer in Tamil Nadu</div>
+              <div class="sug-desc">45 yrs, income 1.5 lakh</div>
+            </div>
+            <div class="sug" onclick="sendSug(this)">
+              <div class="sug-ico">👩</div>
+              <div class="sug-title">Women's schemes</div>
+              <div class="sug-desc">Maharashtra, age 28</div>
+            </div>
+            <div class="sug" onclick="sendSug(this)">
+              <div class="sug-ico">🎓</div>
+              <div class="sug-title">SC student scholarship</div>
+              <div class="sug-desc">Karnataka, law college</div>
+            </div>
+            <div class="sug" onclick="sendSug(this)">
+              <div class="sug-ico">👴</div>
+              <div class="sug-title">Old age pension</div>
+              <div class="sug-desc">BPL, age 68</div>
+            </div>
+            <div class="sug" onclick="sendSug(this)">
+              <div class="sug-ico">🏠</div>
+              <div class="sug-title">Rural housing</div>
+              <div class="sug-desc">PMAY-G eligibility</div>
+            </div>
+            <div class="sug" onclick="sendSug(this)">
+              <div class="sug-ico">💊</div>
+              <div class="sug-title">Ayushman Bharat</div>
+              <div class="sug-desc">Family health cover</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- input section wrapper (full width, then max-width inside) -->
+      <div style="border-top:1px solid var(--border); padding: 14px 24px 18px;">
+        <div style="max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:10px;">
+          <div class="lang-row">
+            <button class="lang-pill active" onclick="setLang(this,'')">EN</button>
+            <button class="lang-pill" onclick="setLang(this,'Hindi mein batao')">हिंदी</button>
+            <button class="lang-pill" onclick="setLang(this,'Tamil la sollu')">தமிழ்</button>
+            <button class="lang-pill" onclick="setLang(this,'Telugu lo cheppu')">తెలుగు</button>
+            <button class="lang-pill" onclick="setLang(this,'Bangla te bolo')">বাংলা</button>
+            <button class="lang-pill" onclick="setLang(this,'Marathi madhe sang')">मराठी</button>
+            <button class="lang-pill" onclick="setLang(this,'Kannada alli heli')">ಕನ್ನಡ</button>
+          </div>
+          <div class="input-box">
+            <div class="att-row" id="att-row"></div>
+            <div class="input-row">
+              <textarea id="m" placeholder="Ask about any government scheme…" rows="1"
+                oninput="autosize(this)" onkeydown="onKey(event)"></textarea>
+              <div class="input-actions">
+                <label class="btn-icon" title="Attach photo">
+                  📎<input id="img-input" type="file" accept="image/*" multiple hidden>
+                </label>
+                <button class="btn-send" id="send-btn" onclick="send()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- decision panel -->
+    <div class="dec-panel">
+      <div class="dec-panel-head">
+        <h3><span class="live-dot"></span>Strands Decider 2B</h3>
+        <p>Tool selection · real-time decisions</p>
+      </div>
+      <div id="dec">
+        <div class="dec-empty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/>
+          </svg>
+          <p>Each time the agent picks a tool, the decision and confidence scores appear here.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const log = document.getElementById('log');
+const dec = document.getElementById('dec');
+let pending = [], busy = false;
+
+/* ── info ── */
+fetch('/api/info').then(r=>r.json()).then(i=>{
+  const llm = (i.llm||'').replace('AWS Student Builder Group VVCE cloud','AWSSBG VVCE').split('(')[0].trim();
+  const d   = (i.decider||'ugmdu').replace('ugmdu','AWSSBG VVCE');
+  document.getElementById('llm-badge').textContent  = llm;
+  document.getElementById('dec-badge').textContent  = d;
+  document.getElementById('llm-label').textContent  = 'LLM: ' + llm;
+  document.getElementById('dec-label').textContent  = 'Decider: ' + d;
+});
+
+/* ── helpers ── */
+function removeWelcome(){ const w=document.getElementById('welcome'); if(w) w.remove(); }
+
+function autosize(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,160)+'px';
+}
+function onKey(e){ if(e.key==='Enter'&&!e.shiftKey&&!e.shiftKey){ e.preventDefault(); send(); } }
+
+function sendSug(el){
+  const t = (el.querySelector('.sug-title').textContent+', '+el.querySelector('.sug-desc').textContent);
+  document.getElementById('m').value = t; send();
+}
+function sendText(t){ document.getElementById('m').value=t; send(); }
+function setLang(el,msg){
+  document.querySelectorAll('.lang-pill').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  if(msg){ document.getElementById('m').value=msg; send(); }
+}
+function newChat(){ location.reload(); }
+
+/* ── attach ── */
+document.getElementById('img-input').addEventListener('change', async e=>{
+  for(const f of e.target.files)
+    pending.push(await new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result);r.readAsDataURL(f);}));
+  const row=document.getElementById('att-row');
+  row.innerHTML=pending.map(u=>`<img src="${u}" alt="">`).join('');
+  e.target.value='';
+});
+
+/* ── send ── */
+async function send(){
+  if(busy) return;
+  const inp=document.getElementById('m');
+  const text=inp.value.trim();
+  if(!text&&!pending.length) return;
+  inp.value=''; inp.style.height='auto';
+  const imgs=[...pending]; pending=[];
+  document.getElementById('att-row').innerHTML='';
+  removeWelcome();
+  busy=true;
+  document.getElementById('send-btn').disabled=true;
+
+  // user row
+  const uRow=document.createElement('div');
+  uRow.className='msg-row user';
+  uRow.innerHTML=`<div class="bubble">${imgs.map(u=>`<img src="${u}" alt="">`).join('')}${esc(text)}</div>`;
+  log.appendChild(uRow);
+  log.scrollTop=1e9;
+
+  // bot row with typing
+  const bRow=document.createElement('div');
+  bRow.className='msg-row bot';
+  bRow.innerHTML=`<div class="bot-avatar">🏛️</div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  log.appendChild(bRow);
+  log.scrollTop=1e9;
+  const bub=bRow.querySelector('.bubble');
+
+  try{
+    const r=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({message:text||(imgs.length?'(photo)':''),images:imgs})});
+    const out=await r.json();
+    (out.decisions||[]).forEach(addDecision);
+    const n=(out.decisions||[]).length;
+    if(out.error){
+      bub.innerHTML=`<span style="color:var(--red)">${esc(out.error)}</span>`;
+    } else {
+      await typewrite(bub, out.reply,
+        `<div class="bubble-meta">${out.latency_ms}ms · ${n} decision${n===1?'':'s'}${out.served_by?' · '+esc(out.served_by):''}</div>`);
+    }
+  }catch(e){
+    bub.innerHTML=`<span style="color:var(--red)">Error: ${esc(e.message)}</span>`;
+  }
+  busy=false;
+  document.getElementById('send-btn').disabled=false;
+  document.body.dataset.turns = String(Number(document.body.dataset.turns || 0) + 1);
+  log.scrollTop=1e9;
+}
+
+/* ── typewriter animation ── */
+async function typewrite(el, text, metaHtml){
+  el.innerHTML='';
+  const cursor=document.createElement('span');
+  cursor.className='cursor';
+  el.appendChild(cursor);
+  const chars=[...text];
+  let i=0;
+  // chunk-based for speed: render in groups of ~4 chars
+  await new Promise(resolve=>{
+    function step(){
+      const batch=Math.min(4,chars.length-i);
+      for(let b=0;b<batch;b++){
+        const ch=chars[i++];
+        if(ch==='\n'){
+          el.insertBefore(document.createElement('br'),cursor);
+        } else {
+          el.insertBefore(document.createTextNode(ch),cursor);
+        }
+      }
+      log.scrollTop=1e9;
+      if(i<chars.length) requestAnimationFrame(step);
+      else resolve();
+    }
+    requestAnimationFrame(step);
+  });
+  cursor.remove();
+  el.innerHTML=el.innerHTML + metaHtml;
+}
+
+/* ── decision card ── */
+function barColor(v){ return v>=0.7?'#22c55e':v>=0.4?'#f59e0b':'#ef4444'; }
+
+function arc(conf){
+  const R=17, C=2*Math.PI*R;
+  const color=barColor(conf);
+  return `<div class="arc-wrap">
+    <svg width="46" height="46" viewBox="0 0 46 46">
+      <circle cx="23" cy="23" r="${R}" fill="none" stroke="var(--border)" stroke-width="4"/>
+      <circle cx="23" cy="23" r="${R}" fill="none" stroke="${color}" stroke-width="4"
+        stroke-dasharray="${(conf*C).toFixed(1)} ${C.toFixed(1)}"
+        stroke-linecap="round" transform="rotate(-90 23 23)"/>
+    </svg>
+    <div class="arc-pct" style="color:${color}">${Math.round(conf*100)}%</div>
+  </div>`;
+}
+
+function addDecision(rec){
+  if(dec.querySelector('.dec-empty')) dec.innerHTML='';
+  const verdict  = rec.verdict||rec.tool_selected||'none';
+  const conf     = rec.confidence??0;
+  const ms       = rec.decider_ms?Math.round(rec.decider_ms)+'ms':'';
+  const pattern  = rec.pattern||'#tool-selection';
+  const tool     = rec.tool_selected||verdict;
+
+  let probs={};
+  if(rec.probabilities&&typeof rec.probabilities==='object') probs=rec.probabilities;
+  else for(const[k,v]of Object.entries(rec))
+    if(typeof v==='number'&&v>=0&&v<=1&&!k.endsWith('_ms')&&k!=='confidence') probs[k]=v;
+
+  const bars=Object.entries(probs).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`
+    <div class="bar-row">
+      <div class="bar-name">${esc(k)}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(v*100).toFixed(1)}%;background:${barColor(v)}"></div></div>
+      <div class="bar-val">${v.toFixed(2)}</div>
+    </div>`).join('');
+
+  const el=document.createElement('div');
+  el.className='dcard';
+  el.innerHTML=`
+    <div class="dcard-head">
+      <div class="dcard-left">
+        <div class="dcard-label">Tool selected</div>
+        <div class="dcard-tool">${esc(tool)}</div>
+        <div class="dcard-tag">${esc(pattern)}</div>
+      </div>
+      ${arc(conf)}
+    </div>
+    <div class="dverdict dv-${esc(verdict)}">${esc(verdict)}</div>
+    <div class="dcard-bars">${bars}</div>
+    <div class="dcard-foot">
+      <span>narrowed: ${rec.narrowed?'yes':'no'}</span>
+      ${ms?`<span>${ms}</span>`:''}
+      <span>conf ${(conf*100).toFixed(0)}%</span>
+    </div>`;
+  dec.prepend(el);
+}
+</script>
+</body>
+</html>

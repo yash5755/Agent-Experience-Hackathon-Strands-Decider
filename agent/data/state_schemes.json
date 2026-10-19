@@ -1,0 +1,499 @@
+[
+  {
+    "slug": "tn-kalaignar-magalir-urimai",
+    "name": "Kalaignar Magalir Urimai Thittam",
+    "full_name": "Kalaignar Magalir Urimai Thittam (Tamil Nadu)",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "category": ["woman"],
+    "min_age": 21,
+    "max_age": null,
+    "max_income_lpa": 2.5,
+    "description": "Monthly financial assistance of Rs 1,000 to eligible women heads of families in Tamil Nadu.",
+    "benefit": "Rs 1,000/month directly to bank account.",
+    "eligibility_criteria": [
+      "Woman head of family (major earner or sole earner)",
+      "Age 21 or above",
+      "Annual family income below Rs 2.5 lakh",
+      "Resident of Tamil Nadu with valid ration card"
+    ],
+    "documents": ["Aadhaar card", "Ration card", "Income certificate", "Bank account passbook", "Residence proof"],
+    "application_steps": [
+      "Apply online at magalir.tn.gov.in or at nearest Ration Shop / VAO office",
+      "Submit documents and verify mobile number",
+      "Application verified by Village Administrative Officer",
+      "Funds credited monthly to bank account"
+    ],
+    "apply_url": "https://magalir.tn.gov.in"
+  },
+  {
+    "slug": "tn-cm-breakfast",
+    "name": "CM Breakfast Scheme (TN)",
+    "full_name": "Chief Minister's Breakfast Scheme – Tamil Nadu",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "category": ["student"],
+    "min_age": 6,
+    "max_age": 12,
+    "max_income_lpa": null,
+    "description": "Free nutritious breakfast to government primary school students in Tamil Nadu.",
+    "benefit": "Free breakfast (nutritious hot meal) every school day.",
+    "eligibility_criteria": [
+      "Student of government primary school (Classes I–V) in Tamil Nadu"
+    ],
+    "documents": ["School enrollment certificate"],
+    "application_steps": [
+      "No separate application; automatically covered on enrollment in government primary school",
+      "Breakfast served at school"
+    ],
+    "apply_url": "https://www.tn.gov.in"
+  },
+  {
+    "slug": "tn-thamizha-thandai",
+    "name": "Thamizha Thandai Thittam",
+    "full_name": "Thamizha Thandai Thittam – Tamil Nadu (Senior Citizen Housing)",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "category": ["senior"],
+    "min_age": 60,
+    "max_age": null,
+    "max_income_lpa": 1.2,
+    "description": "Old-age pension and housing support scheme for destitute senior citizens in Tamil Nadu.",
+    "benefit": "Rs 1,000/month pension + priority for government housing.",
+    "eligibility_criteria": [
+      "Age 60 or above",
+      "Tamil Nadu resident",
+      "Annual income below Rs 1.2 lakh",
+      "No other pension from government"
+    ],
+    "documents": ["Aadhaar card", "Age proof", "Income certificate", "Residence proof", "Bank account"],
+    "application_steps": [
+      "Apply at District Social Welfare Office or nearest Ration Shop",
+      "Submit age and income proof",
+      "Verified by Revenue Department",
+      "Pension credited monthly"
+    ],
+    "apply_url": "https://www.tn.gov.in"
+  },
+  {
+    "slug": "tn-chief-minister-green-farms",
+    "name": "CM Green Farms Scheme (TN)",
+    "full_name": "Chief Minister's Green Farms Scheme – Tamil Nadu",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "category": ["farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Subsidy for solar-powered pump sets to reduce electricity cost for Tamil Nadu farmers.",
+    "benefit": "Up to 100% subsidy on solar pump sets (capacity up to 10 HP) for small and marginal farmers.",
+    "eligibility_criteria": [
+      "Registered farmer in Tamil Nadu with agricultural land",
+      "Small or marginal farmer preferred",
+      "Must have power connection applied or approved for agriculture"
+    ],
+    "documents": ["Aadhaar card", "Patta/land records", "Farmer registration certificate", "Bank account"],
+    "application_steps": [
+      "Apply through TANGEDCO district office or nearest Krishi Vigyan Kendra",
+      "Submit land and farmer registration documents",
+      "Site inspection by TANGEDCO",
+      "Pump set installed; subsidy adjusted in bill"
+    ],
+    "apply_url": "https://www.tnagrisnet.tn.gov.in"
+  },
+  {
+    "slug": "mh-ladki-bahin",
+    "name": "Ladki Bahin Yojana (MH)",
+    "full_name": "Mukhyamantri Majhi Ladki Bahin Yojana – Maharashtra",
+    "level": "state",
+    "state": "Maharashtra",
+    "category": ["woman"],
+    "min_age": 21,
+    "max_age": 65,
+    "max_income_lpa": 2.5,
+    "description": "Monthly financial assistance of Rs 1,500 to eligible women in Maharashtra.",
+    "benefit": "Rs 1,500/month to eligible women directly to bank account.",
+    "eligibility_criteria": [
+      "Woman aged 21–65 years",
+      "Maharashtra resident with valid domicile certificate",
+      "Annual family income below Rs 2.5 lakh",
+      "Has a bank account"
+    ],
+    "documents": ["Aadhaar card", "Domicile certificate", "Income certificate", "Bank passbook", "Ration card"],
+    "application_steps": [
+      "Apply online at ladakibahin.maharashtra.gov.in or through nearest Seva Kendra",
+      "Fill application form and upload documents",
+      "Verification by Tehsil office",
+      "Monthly transfer to bank account"
+    ],
+    "apply_url": "https://ladakibahin.maharashtra.gov.in"
+  },
+  {
+    "slug": "mh-ramai-awas",
+    "name": "Ramai Awas Yojana (MH)",
+    "full_name": "Ramai Awas Gharkul Yojana – Maharashtra",
+    "level": "state",
+    "state": "Maharashtra",
+    "category": ["general", "farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": 1.2,
+    "description": "Housing scheme for SC/NB category families in Maharashtra.",
+    "benefit": "Rs 1.2 lakh grant for construction of a pucca house.",
+    "eligibility_criteria": [
+      "SC (Scheduled Caste) or Nav Bauddha (NB) category family",
+      "Annual income below Rs 1.2 lakh",
+      "Houseless or living in kutcha house",
+      "Maharashtra domicile"
+    ],
+    "documents": ["Aadhaar card", "Caste certificate", "Income certificate", "Land ownership / pattatransfer", "Bank account"],
+    "application_steps": [
+      "Apply at District Social Welfare Office (DSWO)",
+      "Submit all documents",
+      "District-level verification and selection",
+      "Amount released in two installments based on construction progress"
+    ],
+    "apply_url": "https://sjsa.maharashtra.gov.in"
+  },
+  {
+    "slug": "mh-shasan-apli-dari",
+    "name": "Shasan Aple Dari (MH)",
+    "full_name": "Shasan Aple Dari – Maharashtra Government at Your Doorstep",
+    "level": "state",
+    "state": "Maharashtra",
+    "category": ["general", "farmer", "woman", "senior"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Mobile camp that brings government services including certificates, pensions and scheme enrollments directly to villages.",
+    "benefit": "On-the-spot issuance of income, caste, residence certificates; enrollment in pension and welfare schemes.",
+    "eligibility_criteria": [
+      "Maharashtra resident",
+      "Scheduled camp visit to the village"
+    ],
+    "documents": ["Aadhaar card", "Existing proof documents relevant to the service requested"],
+    "application_steps": [
+      "Check camp schedule at aapledarbar.maharashtra.gov.in or local Gram Panchayat",
+      "Attend camp on scheduled day with documents",
+      "Submit request at relevant department counter",
+      "Certificate / enrollment issued same day where possible"
+    ],
+    "apply_url": "https://aapledarbar.maharashtra.gov.in"
+  },
+  {
+    "slug": "wb-lakshmir-bhandar",
+    "name": "Lakshmir Bhandar (WB)",
+    "full_name": "Lakshmir Bhandar – West Bengal",
+    "level": "state",
+    "state": "West Bengal",
+    "category": ["woman"],
+    "min_age": 25,
+    "max_age": 60,
+    "max_income_lpa": null,
+    "description": "Monthly income support to women heads of households in West Bengal.",
+    "benefit": "Rs 500/month (general category), Rs 1,000/month (SC/ST category).",
+    "eligibility_criteria": [
+      "Woman head of household aged 25–60",
+      "West Bengal resident with valid ration card",
+      "Household member not employed in government sector",
+      "Has a bank account"
+    ],
+    "documents": ["Aadhaar card", "Ration card", "Bank passbook", "Swasthya Sathi card (if any)", "Proof of age"],
+    "application_steps": [
+      "Apply through Duare Sarkar camps or online at lakshmibhandar.wb.gov.in",
+      "Submit documents and mobile number",
+      "Verified by local administration",
+      "Monthly transfer to bank account"
+    ],
+    "apply_url": "https://lakshmibhandar.wb.gov.in"
+  },
+  {
+    "slug": "wb-swasthya-sathi",
+    "name": "Swasthya Sathi (WB)",
+    "full_name": "Swasthya Sathi Scheme – West Bengal",
+    "level": "state",
+    "state": "West Bengal",
+    "category": ["general", "farmer", "woman", "senior"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": 1.5,
+    "description": "Cashless health insurance of Rs 5 lakh per family per year for all West Bengal residents.",
+    "benefit": "Rs 5 lakh/year cashless hospitalisation at empanelled hospitals.",
+    "eligibility_criteria": [
+      "West Bengal resident",
+      "Annual family income below Rs 1.5 lakh",
+      "Enrolled through Duare Sarkar / Gram Panchayat"
+    ],
+    "documents": ["Aadhaar card", "Ration card", "Income certificate", "Passport photo"],
+    "application_steps": [
+      "Enroll at Duare Sarkar camp or nearest health department office",
+      "Submit documents",
+      "Smart card issued",
+      "Use card for cashless treatment at empanelled hospitals"
+    ],
+    "apply_url": "https://swasthyasathi.gov.in"
+  },
+  {
+    "slug": "up-kanya-sumangala",
+    "name": "Kanya Sumangala Yojana (UP)",
+    "full_name": "Mukhyamantri Kanya Sumangala Yojana – Uttar Pradesh",
+    "level": "state",
+    "state": "Uttar Pradesh",
+    "category": ["woman", "student"],
+    "min_age": 0,
+    "max_age": 18,
+    "max_income_lpa": 3.0,
+    "description": "Financial support to girl children in UP at six key life stages from birth to graduation.",
+    "benefit": "Total Rs 15,000 in 6 installments: Rs 2,000 at birth, Rs 1,000 at vaccination, Rs 2,000 at Class I entry, Rs 2,000 at Class VI entry, Rs 3,000 at Class IX entry, Rs 5,000 at graduation/diploma entry.",
+    "eligibility_criteria": [
+      "Girl child (resident of UP)",
+      "Annual family income below Rs 3 lakh",
+      "Maximum 2 girls per family",
+      "Institutional delivery preferred for birth installment"
+    ],
+    "documents": ["Aadhaar card of parent/guardian", "Birth certificate", "Income certificate", "Bank account in girl's name (or guardian)", "School enrollment certificate (for school installments)"],
+    "application_steps": [
+      "Apply online at mksy.up.gov.in or at nearest ICDS / CDO office",
+      "Register and create profile",
+      "Apply for relevant installment stage",
+      "Verification by District Probation Officer",
+      "Amount transferred to bank account"
+    ],
+    "apply_url": "https://mksy.up.gov.in"
+  },
+  {
+    "slug": "up-samajwadi-pension",
+    "name": "UP Old Age Pension",
+    "full_name": "Mukhyamantri Pension Yojana (Vriddhawastha) – Uttar Pradesh",
+    "level": "state",
+    "state": "Uttar Pradesh",
+    "category": ["senior"],
+    "min_age": 60,
+    "max_age": null,
+    "max_income_lpa": 0.46,
+    "description": "Monthly pension for BPL senior citizens in Uttar Pradesh.",
+    "benefit": "Rs 500/month (including central share) credited to bank account.",
+    "eligibility_criteria": [
+      "Age 60 or above",
+      "UP resident",
+      "Annual income below Rs 46,080 (rural) or Rs 56,460 (urban)",
+      "No other government pension"
+    ],
+    "documents": ["Aadhaar card", "Age proof", "Income certificate (Tehsil)", "Bank account passbook", "Ration card"],
+    "application_steps": [
+      "Apply online at sspy-up.gov.in or at District Social Welfare Office",
+      "Fill form and upload documents",
+      "Gram Sabha / Ward verification",
+      "Pension credited quarterly"
+    ],
+    "apply_url": "https://sspy-up.gov.in"
+  },
+  {
+    "slug": "up-pm-awas-urban",
+    "name": "PMAY Urban (UP)",
+    "full_name": "Pradhan Mantri Awas Yojana (Urban) – Uttar Pradesh implementation",
+    "level": "state",
+    "state": "Uttar Pradesh",
+    "category": ["general", "woman"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": 6.0,
+    "description": "Housing subsidy under PMAY-U for EWS/LIG/MIG urban families in UP.",
+    "benefit": "Interest subsidy of 3–6.5% on home loans (Credit Linked Subsidy Scheme); outright grant for EWS slum dwellers.",
+    "eligibility_criteria": [
+      "Urban area resident of UP",
+      "EWS (income < Rs 3 lakh), LIG (Rs 3–6 lakh) or MIG (Rs 6–18 lakh)",
+      "No pucca house in any urban area of India for self or family member",
+      "Woman co-owner mandatory for EWS/LIG"
+    ],
+    "documents": ["Aadhaar card", "PAN card", "Income certificate", "Property documents / allotment letter", "Bank account"],
+    "application_steps": [
+      "Apply at ULB (Urban Local Body) or online at pmaymis.gov.in",
+      "Select EWS/LIG/MIG-I/MIG-II category",
+      "Submit self-declaration and documents",
+      "List published by ULB; loan linked through PLI bank for CLSS"
+    ],
+    "apply_url": "https://pmaymis.gov.in"
+  },
+  {
+    "slug": "ka-raitha-siri",
+    "name": "Raitha Siri (KA)",
+    "full_name": "Raitha Siri – Karnataka Farmer Family Support",
+    "level": "state",
+    "state": "Karnataka",
+    "category": ["farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": 2.0,
+    "description": "Annual income support to farmer families in Karnataka as addition to PM-KISAN.",
+    "benefit": "Rs 4,000/year in addition to PM-KISAN (total Rs 10,000/year for eligible farmers).",
+    "eligibility_criteria": [
+      "Farmer with land in Karnataka (up to 2 hectares)",
+      "Registered in e-RTC (Rights, Tenancy, Cultivation) records",
+      "Annual family income below Rs 2 lakh"
+    ],
+    "documents": ["Aadhaar card", "e-RTC / Pahani records", "Bank account (seeded with Aadhaar)", "Farmer registration on Bhoomi portal"],
+    "application_steps": [
+      "Register on Bhoomi or Raitha Siri portal (raithasiri.karnataka.gov.in)",
+      "Verify land and Aadhaar linkage",
+      "Application auto-populated from e-RTC",
+      "Amount credited in two installments"
+    ],
+    "apply_url": "https://raithasiri.karnataka.gov.in"
+  },
+  {
+    "slug": "ka-gruha-jyothi",
+    "name": "Gruha Jyothi (KA)",
+    "full_name": "Gruha Jyothi – Karnataka Free Electricity",
+    "level": "state",
+    "state": "Karnataka",
+    "category": ["general", "farmer", "woman"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Free 200 units of electricity per month to domestic consumers in Karnataka.",
+    "benefit": "Zero electricity bill for consumption up to 200 units/month; excess units billed normally.",
+    "eligibility_criteria": [
+      "Domestic electricity connection in Karnataka (LT-1 tariff)",
+      "Single residential connection per household",
+      "Registered under HESCOM/BESCOM/MESCOM/GESCOM/CHESCOM"
+    ],
+    "documents": ["Electricity bill / consumer number", "Aadhaar card", "Bank account (for subsidy credit if applicable)"],
+    "application_steps": [
+      "Automatically applied to eligible domestic meters",
+      "Check gejayojane.karnataka.gov.in to verify eligibility",
+      "If not applied, apply at nearest ESCOM consumer service centre"
+    ],
+    "apply_url": "https://gejayojane.karnataka.gov.in"
+  },
+  {
+    "slug": "ka-anna-bhagya",
+    "name": "Anna Bhagya (KA)",
+    "full_name": "Anna Bhagya – Karnataka Free Rice Scheme",
+    "level": "state",
+    "state": "Karnataka",
+    "category": ["general", "farmer", "woman", "senior", "disabled"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": 1.5,
+    "description": "Free 10 kg rice per person per month to ration card holders in Karnataka.",
+    "benefit": "10 kg rice per person per month free through ration shops.",
+    "eligibility_criteria": [
+      "BPL/Antyodaya ration card holder in Karnataka",
+      "Annual family income below Rs 1.5 lakh"
+    ],
+    "documents": ["Ration card", "Aadhaar card (for biometric authentication at shop)"],
+    "application_steps": [
+      "Collect rice at nearest Fair Price Shop (Ration Shop) using ration card",
+      "Biometric/Aadhaar authentication at POS machine",
+      "Entitlement: 10 kg per family member per month"
+    ],
+    "apply_url": "https://ahara.kar.nic.in"
+  },
+  {
+    "slug": "wb-krishak-bandhu",
+    "name": "Krishak Bandhu (WB)",
+    "full_name": "Krishak Bandhu – West Bengal Farmer Income Support",
+    "level": "state",
+    "state": "West Bengal",
+    "category": ["farmer"],
+    "min_age": 18,
+    "max_age": null,
+    "max_income_lpa": null,
+    "description": "Annual income support of Rs 10,000 per acre (max Rs 10,000/year for up to 1 acre) and Rs 2 lakh death benefit to farmers in West Bengal.",
+    "benefit": "Rs 5,000 per acre per season (kharif + rabi = Rs 10,000/year for 1 acre); Rs 2 lakh accidental death insurance.",
+    "eligibility_criteria": [
+      "Farmer with land records in West Bengal (minimum 0.01 acre)",
+      "Registered in Krishak Bandhu portal",
+      "For death benefit: family of farmer aged 18–60"
+    ],
+    "documents": ["Aadhaar card", "Land records (Record of Rights)", "Bank account", "Passport photo"],
+    "application_steps": [
+      "Register at krishakbandhu.net or nearest Krishi Bhavan",
+      "Submit land and identity documents",
+      "Verified by Block Agriculture Officer",
+      "Amount credited twice yearly; death benefit to nominee on claim"
+    ],
+    "apply_url": "https://krishakbandhu.net"
+  },
+  {
+    "slug": "tn-dr-ambedkar-law-scholarship",
+    "name": "Dr Ambedkar Law Scholarship (TN)",
+    "full_name": "Dr Ambedkar Law Scholarship – Tamil Nadu SC/ST Students",
+    "level": "state",
+    "state": "Tamil Nadu",
+    "category": ["student"],
+    "min_age": 18,
+    "max_age": 30,
+    "max_income_lpa": 2.0,
+    "description": "Full scholarship for SC/ST students pursuing law (LLB/LLM) in Tamil Nadu.",
+    "benefit": "Full tuition fee + maintenance allowance (Rs 1,500/month hosteller, Rs 750/month day scholar).",
+    "eligibility_criteria": [
+      "SC or ST student in Tamil Nadu",
+      "Enrolled in recognised law college (LLB/LLM)",
+      "Annual family income below Rs 2 lakh",
+      "Not receiving any other scholarship"
+    ],
+    "documents": ["Aadhaar card", "Caste certificate", "Income certificate", "College enrollment letter", "Previous marksheet", "Bank account"],
+    "application_steps": [
+      "Apply at college scholarship coordinator or District Social Welfare Office",
+      "Submit documents within deadline",
+      "Forwarded by college to DPI/Social Welfare Department",
+      "Scholarship credited to bank account"
+    ],
+    "apply_url": "https://www.tn.gov.in"
+  },
+  {
+    "slug": "mh-mahatma-jyotirao-phule-jan-arogya",
+    "name": "MJPJAY (MH)",
+    "full_name": "Mahatma Jyotirao Phule Jan Arogya Yojana – Maharashtra",
+    "level": "state",
+    "state": "Maharashtra",
+    "category": ["general", "farmer", "woman", "senior"],
+    "min_age": null,
+    "max_age": null,
+    "max_income_lpa": 1.0,
+    "description": "State health insurance of Rs 1.5 lakh per year for BPL and farmers in Maharashtra (combined with PM-JAY gives Rs 5 lakh).",
+    "benefit": "Rs 1.5 lakh/year (up to Rs 5 lakh combined with PMJAY) cashless hospitalisation.",
+    "eligibility_criteria": [
+      "Maharashtra resident",
+      "Annual family income below Rs 1 lakh (BPL), or farmer (Yellow/Orange ration card)",
+      "Any family member as beneficiary"
+    ],
+    "documents": ["Aadhaar card", "Yellow/Orange ration card or BPL certificate", "Income certificate", "Passport photo"],
+    "application_steps": [
+      "Visit empanelled hospital or nearest Arogya Mitra centre",
+      "Check eligibility by Aadhaar / ration card",
+      "Get MJPJAY card issued",
+      "Cashless treatment at empanelled hospitals"
+    ],
+    "apply_url": "https://www.jeevandayee.gov.in"
+  },
+  {
+    "slug": "ka-vidya-siri",
+    "name": "Vidya Siri (KA)",
+    "full_name": "Vidya Siri – Karnataka SC/ST Scholarship",
+    "level": "state",
+    "state": "Karnataka",
+    "category": ["student"],
+    "min_age": null,
+    "max_age": 30,
+    "max_income_lpa": 2.5,
+    "description": "Post-matric scholarship for SC/ST students in Karnataka for professional and non-professional courses.",
+    "benefit": "Full tuition fee reimbursement + maintenance allowance (Rs 550–1,200/month depending on course and hostel/day).",
+    "eligibility_criteria": [
+      "SC or ST student in Karnataka",
+      "Post-matric course (Class XI and above)",
+      "Annual family income below Rs 2.5 lakh",
+      "Karnataka domicile"
+    ],
+    "documents": ["Aadhaar card", "Caste certificate", "Income certificate", "Admission letter", "Previous marksheet", "Bank account"],
+    "application_steps": [
+      "Apply online at sevasindhu.karnataka.gov.in or scholarships.gov.in",
+      "Submit documents online and at institution",
+      "Institution forwards to DSWO",
+      "Amount credited to bank account"
+    ],
+    "apply_url": "https://sevasindhu.karnataka.gov.in"
+  }
+]

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "benefitbot"
+version = "1.0.0"
+description = "BenefitBot: Find Indian government schemes you may be eligible for"
+requires-python = ">=3.12"
+dependencies = [
+    "strands-agents[openai]>=1.60.0",
+    "boto3>=1.35",
+    "bedrock-agentcore>=1.18.1",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pyyaml>=6",
+    "mcp>=1.28.1,<2",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agent*", "decider_kit*"]

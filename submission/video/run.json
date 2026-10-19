@@ -1,0 +1,110 @@
+[
+ {
+  "start": 5.073354959487915,
+  "end": 39.06892275810242,
+  "out": {
+   "reply": "Namaste! Hello there! \ud83d\ude0a  \nTo help you find the right schemes for you, could you please tell me a few things:\n\n1. Which **state** do you live in?  \n2. Are you a farmer/woman/student/senior/disabled/general category?  \n3. Approximately how much is your **income**? (Monthly, yearly, or LPA \u2013 whatever fits best).  \n4. How old are you now?  \n\nJust tell me these four things and I'll help you find the best schemes for you!",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "ask_more_questions",
+     "confidence": 0.433,
+     "narrowed": false,
+     "probabilities": {
+      "search_schemes": 0.377,
+      "ask_more_questions": 0.433,
+      "none": 0.191
+     },
+     "verdict": "ask_more_questions",
+     "decider_ms": 2133.3033999999316
+    }
+   ],
+   "model_id": "qwen3.5-4b",
+   "latency_ms": 24817,
+   "agent": "BenefitBot"
+  },
+  "say": "Hello, I want to know which government schemes I can get.",
+  "narrate": "A user opens BenefitBot with no profile yet \u00e2\u20ac\u201d the decider should route to ask_more_questions."
+ },
+ {
+  "start": 39.06892275810242,
+  "end": 139.6309142112732,
+  "out": {
+   "reply": "Namaste! I'm happy to share these with you. Here are some schemes in Tamil Nadu & nationwide that might suit a farmer like you:\n\n* **PM-KISAN** \u2013 Gives \u20b96,000 each year in 3 installments directly to your bank. You may be eligible based on what you told me.\n\n* **Ayushman Bharat (PM-JAY)** \u2013 Health insurance of \u20b95 lakh per family for hospitalisation, paid at empanelled hospitals without cash. POTENTIAL eligibility.\n\n* **PMAY-G (Pradhan Mantri Awas Yojana Gramin)** \u2013 Can help build a house: \u20b91.2\u20131.3 lakh, depending on whether you're in plains or hilly area. POTENTIAL.\n\n* **MGNREGA** \u2013 Up to 100 days of work per year at minimum wage rates (approx \u20b9200\u2013\u20b9350/day). POTENTIAL.\n\n* **PM Fasal Bima Yojana** \u2013 Crop insurance; you can get claim payout if there's crop loss, premiums start from a low percentage. POTENTIAL.\n\n* **Kisan Credit Card** \u2013 Loan up to \u20b93 lakh at low interest rate; good for farm expenses. POTENTIAL.\n\n* **PM Mudra Yojana** \u2013 Loans from \u20b950,000 to \u20b910 lakh for business/asset purchase for farmers. POTENTIAL.\n\n---\n\n**State Scheme (Tamil Nadu):**\n\n* **CM Green Farms Scheme (TN)** \u2013 Up to 100% subsidy on solar pump sets for small and marginal farmers. POTENTIAL.\n\n---\n\nWould you like to know more about any of these? For example, how much money each gives or what documents are needed to apply? Say \"yes\" for a particular scheme and I'll give details, including what documents you might need.",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "search_schemes",
+     "confidence": 0.657,
+     "narrowed": true,
+     "probabilities": {
+      "search_schemes": 0.657,
+      "ask_more_questions": 0.334,
+      "none": 0.008
+     },
+     "verdict": "search_schemes",
+     "decider_ms": 2263.71570000083
+    }
+   ],
+   "model_id": "qwen3.5-4b",
+   "latency_ms": 86340,
+   "agent": "BenefitBot"
+  },
+  "say": "I am a farmer from Tamil Nadu. I am 45 years old and my income is about 1.5 lakh per year.",
+  "narrate": "Profile is now rich enough \u00e2\u20ac\u201d the decider should route to search_both or search_state_schemes."
+ },
+ {
+  "start": 139.6309142112732,
+  "end": 187.13897395133972,
+  "out": {
+   "reply": "Here are the details for **PM-KISAN**:\n\n**Benefit:**  \n- \u20b96,000 per year (\u20b92,000 given in three installments) directly to your bank account.\n\n**POTENTIAL documents you will need:**\n- Aadhaar card\n- Land ownership records / Khatoni\n- Bank passbook\n- Mobile number\n\n**How to apply:**  \n1. Visit *pmkisan.gov.in* or go to a nearby Common Service Centre (CSC).  \n2. Click 'Farmer Corner' \u2192 'New Farmer Registration'.  \n3. Enter your Aadhaar number and state, and fill in land and bank details.  \n4. Submit the form; you can check the status of your application online.\n\n**Note:** Eligibility is POTENTIAL based on what was shared. Official verification will happen at the time of application.",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "search_schemes",
+     "confidence": 0.851,
+     "narrowed": true,
+     "probabilities": {
+      "search_schemes": 0.851,
+      "ask_more_questions": 0.112,
+      "none": 0.037
+     },
+     "verdict": "search_schemes",
+     "decider_ms": 2728.3320000005915
+    }
+   ],
+   "model_id": "qwen3.5-4b",
+   "latency_ms": 37914,
+   "agent": "BenefitBot"
+  },
+  "say": "Tell me more about PM-KISAN. What documents do I need?",
+  "narrate": "User asks for a specific scheme checklist \u00e2\u20ac\u201d get_document_checklist is called."
+ },
+ {
+  "start": 187.13897395133972,
+  "end": 222.88200736045837,
+  "out": {
+   "reply": "\u0ba8\u0ba9\u0bcd\u0bb1\u0bbf! \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0ba4\u0bae\u0bbf\u0bb4\u0bbf\u0bb2\u0bcd \u0baa\u0bc7\u0b9a\u0bc1\u0d35\u0d3e\u0b99\u0bcd\u0b95. \n\n\u0b8f\u0bb1\u0bcd\u0b95\u0ba9\u0bb5\u0bc7, \u0ba8\u0bbe\u0ba9\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bbe\u0ba9 \u0baa\u0ba3\u0b99\u0bcd\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bb1\u0bbf\u0baf \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bc7\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0bc7\u0ba9\u0bcd. \u0b86\u0ba9\u0bbe\u0bb2\u0bcd, \u0b92\u0bb0\u0bc1 \u0b9a\u0bbf\u0bb2 \u0ba4\u0bb0\u0bb5\u0bc1\u0b95\u0bb3\u0bcd \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd:\n- \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b8e\u0ba8\u0bcd\u0ba4 \u0bae\u0bbe\u0ba8\u0bbf\u0bb2\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bcd?\n- \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0bb5\u0baf\u0ba4\u0bc1 \u0b8e\u0ba9\u0bcd\u0ba9?\n\n\u0b87\u0ba4\u0bc8 \u0bb5\u0bbf\u0b9f\u0bc1\u0bae\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd, \u0ba8\u0bbe\u0ba9\u0bcd \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b8f\u0bb1\u0bcd\u0bb1 \u0b9a\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0baf\u0bae\u0bbe\u0ba9 \u0bb5\u0bb4\u0b95\u0bcd\u0b95\u0bc1\u0b95\u0bb3\u0bc8\u0b95\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9f\u0bb2\u0bbe\u0bae\u0bcd. \u0b95\u0bb5\u0ba9\u0bae\u0bbe\u0b95!",
+   "decisions": [
+    {
+     "pattern": "#tool-selection",
+     "tool_selected": "search_schemes",
+     "confidence": 0.701,
+     "narrowed": true,
+     "probabilities": {
+      "search_schemes": 0.701,
+      "ask_more_questions": 0.272,
+      "none": 0.027
+     },
+     "verdict": "search_schemes",
+     "decider_ms": 3360.7826000006753
+    }
+   ],
+   "model_id": "qwen3.5-4b",
+   "latency_ms": 28823,
+   "agent": "BenefitBot"
+  },
+  "say": "Tamil la sollu",
+  "narrate": "User switches language to Tamil mid-conversation."
+ }
+]

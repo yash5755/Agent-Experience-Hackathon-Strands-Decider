@@ -1,0 +1,21 @@
+title: "BenefitBot: Find Indian Government Schemes in Your Language"
+pitch: "BenefitBot helps rural Indians discover government schemes they may be eligible for, with a personalised document checklist, in their own language."
+features:
+  - "asks a few questions to understand the user's profile"
+  - "Strands Decider picks the right scheme search tool before every LLM turn"
+  - "returns matched central and state schemes with POTENTIAL vs confirmed eligibility"
+  - "generates a personalised document checklist and application guide"
+  - "responds in English, Hindi, Tamil, Telugu, Bengali or Marathi"
+eager: false
+intro: "BenefitBot helps rural users in India find government schemes. Strands Decider picks the right search tool — central schemes, state schemes, or ask a clarifying question — before each agent turn."
+intro_normal: "BenefitBot runs on Amazon Bedrock AgentCore Runtime. Strands Decider selects the right scheme search tool on every turn, keeping responses fast and focused."
+turns:
+  - say: "Hello, I want to know which government schemes I can get."
+    narrate: "A user opens BenefitBot with no profile yet — the decider should route to ask_more_questions."
+  - say: "I am a farmer from Tamil Nadu. I am 45 years old and my income is about 1.5 lakh per year."
+    narrate: "Profile is now rich enough — the decider should route to search_both or search_state_schemes."
+  - say: "Tell me more about PM-KISAN. What documents do I need?"
+    narrate: "User asks for a specific scheme checklist — get_document_checklist is called."
+  - say: "Tamil la sollu"
+    narrate: "User switches language to Tamil mid-conversation."
+outro: "One Strands Decider call per turn selects the right tool. The LLM handles only what it is good at — talking to the user and composing the answer."

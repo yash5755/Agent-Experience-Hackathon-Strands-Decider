@@ -1,0 +1,14 @@
+# Amazon Bedrock AgentCore features for BenefitBot.
+# `./kit deploy` adds what is enabled to deploy/agentcore/agentcore.json and deploys it.
+
+memory:
+  enabled: true
+  name: benefitmemory
+  strategies: [SEMANTIC, USER_PREFERENCE]
+  expiry_days: 30
+
+gateway:
+  enabled: false
+  name: tools
+  authorizer: AWS_IAM
+  targets: []

@@ -1,0 +1,2 @@
+{"success":false,"logPath":"agentcore\\.cli\\logs\\deploy\\deploy-20261019-235340.log","dependencySyncResult":{"outcome":"synced","optedOut":false,"checkOnly":false,"migratedFromCaret":false,"reinstalled":false,"skewWarning":false,"changes":[],"restored":[],"skipped":[],"warnings":[],"notice":null},"error":"CDK deploy failed: ❌  AgentCore-BenefitBot-default failed: NoStack: CloudFormationStack object does not hold a stack"}
+
