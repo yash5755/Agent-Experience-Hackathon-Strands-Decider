@@ -11,6 +11,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+ENV DECIDER_MODE=ugmdu
+ENV DECIDER_URL=https://da25tnxy06gjk.cloudfront.net
+ENV LLM_PROVIDER=ugmdu
+ENV LLM_MODEL_ID=qwen3.5-4b
 ENV PORT=7860
 EXPOSE 7860
 
