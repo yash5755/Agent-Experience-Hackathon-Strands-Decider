@@ -7,7 +7,7 @@ Submit before 23 October 2026, 11:59 p.m. PT on the hackathon page.
 - Article: <paste the AWS Builder Center link after publishing submission/article/>
 - Tags: #strands-decider-2b #tool-selection
 - Agent on AWS: arn:aws:bedrock-agentcore:us-east-1:951247597258:runtime/BenefitBot_benefitbotRuntime-DX4ijw4Lh6
-- Live Interactive Web App: https://low-reliability-binding-vice.trycloudflare.com
+- Live Interactive Web App: https://accessory-conservative-pos-acrylic.trycloudflare.com
 
 Left to do by hand:
 1. Upload submission/video/demo.mp4 to YouTube or Vimeo as Public, and paste the link above.
